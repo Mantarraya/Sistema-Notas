@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistema.SistemaCursoController">
+   <children>
+      <Pane prefHeight="652.0" prefWidth="191.0" style="-fx-background-color: #7481D6;">
+         <children>
+            <Button layoutX="50.0" layoutY="200.0" mnemonicParsing="false" onAction="#mostrarPagPersonalAction" style="-fx-background-color: #7481D6;" text="Pagina Personal" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/iconoPagPersonal.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="50.0" layoutY="350.0" mnemonicParsing="false" onAction="#salirAction" style="-fx-background-color: #7481D6;" text="Salir" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/iconoCerrarSesion.png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" onAction="#mostrarPagPersonalAction" style="-fx-background-color: #7481D6;" text="Pagina Personal" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/iconoPagPersonal.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="50.0" layoutY="150.0" mnemonicParsing="false" onAction="#mostrarInicioAction" style="-fx-background-color: #7481D6;" text="Inicio" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/iconoInicio.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button layoutX="50.0" layoutY="250.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #7481D6;" text="Asignatura" textFill="WHITE">
+         <font>
+            <Font name="Candara Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/iconoCurso.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="50.0" layoutY="300.0" mnemonicParsing="false" onAction="#mostrarEstadisticasAction" style="-fx-background-color: #7481D6;" text="Estadisticas" textFill="WHITE">
+         <font>
+            <Font name="Candara Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/iconoEstadistica.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="190.0" orientation="VERTICAL" prefHeight="650.0" prefWidth="0.0" />
+      <Separator layoutY="120.0" prefHeight="0.0" prefWidth="950.0" />
+      <Pane prefHeight="120.0" prefWidth="189.0" style="-fx-background-color: #5661A6;">
+         <children>
+            <ImageView fitHeight="98.0" fitWidth="87.0" layoutX="53.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/iconoSistema.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <TabPane fx:id="tabPane" layoutX="191.0" layoutY="89.0" prefHeight="560.0" prefWidth="759.0" style="-fx-background-color: #ffffff;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Inicio">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="252.0" layoutY="474.0" text="PROYECTO DEL CURSO DE ALGORITMICA II">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="50.0" layoutY="120.0" text="Este programa permite organizar un horario de un curso de una facultad,">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="73.0" layoutY="32.0" text="DESCRIPCION" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="50.0" layoutY="150.0" text="asi como tambien poder registrar datos como asistencias y notas de varios">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="50.0" layoutY="180.0" text="alumnos en general.">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="183.0" fitWidth="204.0" layoutX="280.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/iconoPresentacion.png" />
+                           </image>
+                        </ImageView>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="759.0">
+                     <children>
+                        <Label fx:id="outputNombreProfesor" layoutX="60.0" layoutY="120.0" text="APELLIDOS Y NOMBRES">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="180.0" text="Código:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="240.0" text="Correo electrónico:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="300.0" text="Página web:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputCodigo" layoutX="255.0" layoutY="180.0" text="outputCodigo">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputCorreo" layoutX="255.0" layoutY="240.0" text="outputCorreo">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputPagWeb" layoutX="255.0" layoutY="300.0" text="outputPagWeb">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="610.0" layoutY="30.0" mnemonicParsing="false" onAction="#editarDatosProfesorAction" style="-fx-background-color: #ffffff;" text="Editar Datos" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoEditarProfesor.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="DATOS PERSONALES" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="INFORMACIÓN DE LA ASIGNATURA" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="610.0" layoutY="30.0" mnemonicParsing="false" onAction="#editarDatosAsignaturaAction" style="-fx-background-color: #ffffff;" text="Editar Datos" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoEditarProfesor.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label fx:id="outputNombreAsignatura" layoutX="60.0" layoutY="120.0" text="NOMBRE DE LA ASIGNATURA">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="180.0" text="Código:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="300.0" text="Especialidad:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="240.0" text="Facultad:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputEspecialidad" layoutX="255.0" layoutY="300.0" text="outputEspecialidad">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputFacultad" layoutX="255.0" layoutY="240.0" text="outputFacultad">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputCodigoAsignatura" layoutX="255.0" layoutY="180.0" text="outputCodigoAsignatura">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="360.0" text="Plan académico:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputPlanAcademico" layoutX="255.0" layoutY="360.0" text="outputPlanAcademico">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="60.0" layoutY="430.0" mnemonicParsing="false" onAction="#mostrarAlumnosAction" style="-fx-background-color: #ffffff;" text="Alumnos" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoAlumnos.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="228.0" layoutY="430.0" mnemonicParsing="false" onAction="#mostrarAsistenciaAction" style="-fx-background-color: #ffffff;" text="Asistencia" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoCalendario.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="399.0" layoutY="430.0" mnemonicParsing="false" onAction="#mostrarEvaluacionesAction" style="-fx-background-color: #ffffff;" text="Evaluaciones" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoEvaluaciones.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="581.0" layoutY="430.0" mnemonicParsing="false" onAction="#mostrarNotasAction" style="-fx-background-color: #ffffff;" text="Notas" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoNotas.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="3">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="455.0" layoutY="341.0" text="estadisticas" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="4">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="inputNombreProfesor" layoutX="90.0" layoutY="120.0" prefHeight="37.0" prefWidth="224.0" promptText="Nombres" />
+                        <TextField fx:id="inputApellidoProfesor" layoutX="90.0" layoutY="180.0" prefHeight="37.0" prefWidth="224.0" promptText="Apellidos" />
+                        <TextField fx:id="inputCorreoProfesor" layoutX="90.0" layoutY="240.0" prefHeight="37.0" prefWidth="356.0" promptText="Correo electrónico" />
+                        <TextField fx:id="inputPagWebProfesor" layoutX="90.0" layoutY="300.0" prefHeight="37.0" prefWidth="356.0" promptText="Página web" />
+                        <Button layoutX="377.0" layoutY="400.0" mnemonicParsing="false" onAction="#actualizarDatosProfesorAction" style="-fx-background-color: #ffffff;" text="Actualizar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoAceptar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="212.0" layoutY="400.0" mnemonicParsing="false" onAction="#mostrarPagPersonalAction" style="-fx-background-color: #ffffff;" text="Cancelar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoCancelar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="EDITAR DATOS PERSONALES" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="5">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="inputNombreAsignatura" layoutX="90.0" layoutY="120.0" prefHeight="37.0" prefWidth="224.0" promptText="Nombre de la asignatura" />
+                        <TextField fx:id="inputCodigoAsignatura" layoutX="90.0" layoutY="180.0" prefHeight="37.0" prefWidth="224.0" promptText="Código de la asignatura" />
+                        <TextField fx:id="inputFacultad" layoutX="90.0" layoutY="240.0" prefHeight="37.0" prefWidth="221.0" promptText="Facultad" />
+                        <TextField fx:id="inputPlanAcademico" layoutX="90.0" layoutY="300.0" prefHeight="37.0" prefWidth="478.0" promptText="Plan académico" />
+                        <Button layoutX="377.0" layoutY="400.0" mnemonicParsing="false" onAction="#actualizarDatosAsignaturaAction" style="-fx-background-color: #ffffff;" text="Actualizar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoAceptar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="212.0" layoutY="400.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Cancelar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoCancelar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="EDITAR DATOS DE LA ASIGNATURA" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="inputEspecialidad" layoutX="346.0" layoutY="240.0" prefHeight="37.0" prefWidth="221.0" promptText="Especialidad" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Alumnos">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="ALUMNOS" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="650.0" layoutY="30.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TableView fx:id="tableAlumnos" layoutX="48.0" layoutY="112.0" prefHeight="317.0" prefWidth="667.0">
+                          <columns>
+                            <TableColumn fx:id="columnCodigo" prefWidth="137.66665649414062" text="Código" />
+                            <TableColumn fx:id="columnNombre" prefWidth="267.66668701171875" text="Nombres" />
+                              <TableColumn fx:id="columnApellido" prefWidth="260.0" text="Apellidos" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="347.0" layoutY="450.0" mnemonicParsing="false" onAction="#registrarAlumnoNuevoAction" style="-fx-background-color: #ffffff;" text="Registrar nuevo alumno" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoAnadirAlumno.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="212.0" layoutY="450.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Asistencia">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="ASISTENCIA" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="650.0" layoutY="30.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Evaluaciones">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="EVALUACIONES" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="650.0" layoutY="30.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="60.0" layoutY="120.0" text="Control de lectura:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="180.0" text="Laboratorio:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="240.0" text="Proyecto:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="300.0" text="Examen parcial:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="360.0" text="Examen final:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputControlLectura" layoutX="260.0" layoutY="120.0" text="outputControlLectura">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputLaboratorio" layoutX="260.0" layoutY="180.0" text="outputLaboratorio">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputProyecto" layoutX="260.0" layoutY="240.0" text="outputProyecto">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputExamenParcial" layoutX="260.0" layoutY="300.0" text="outputExamenParcial">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputExamenFinal" layoutX="260.0" layoutY="360.0" text="outputExamenFinal">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="377.0" layoutY="430.0" mnemonicParsing="false" onAction="#editarDatosEvaluacionAction" style="-fx-background-color: #ffffff;" text="Modificar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoEditar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="212.0" layoutY="430.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Notas">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="NOTAS" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="650.0" layoutY="30.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TableView fx:id="tableNotas" layoutX="16.0" layoutY="112.0" prefHeight="317.0" prefWidth="731.0">
+                           <columns>
+                              <TableColumn fx:id="columnCodigoNota" prefWidth="66.66668701171875" text="Código" />
+                              <TableColumn fx:id="columnNombreNota" prefWidth="75.0" text="Nombres" />
+                              <TableColumn fx:id="columnApellidoNota" prefWidth="89.33334350585938" text="Apellidos" />
+                              <TableColumn fx:id="columnControl" prefWidth="120.0" text="Control de lectura" />
+                              <TableColumn fx:id="columnLaboratorio" prefWidth="96.66668701171875" text="Laboratorio" />
+                              <TableColumn fx:id="columnProyecto" prefWidth="69.6666259765625" text="Proyecto" />
+                              <TableColumn fx:id="columnExamenParcial" prefWidth="103.6666259765625" text="Examen Parcial" />
+                              <TableColumn fx:id="columnExamenFinal" prefWidth="107.0" text="Examen Final" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="347.0" layoutY="450.0" mnemonicParsing="false" onAction="#mostrarRegistroNotasAction" style="-fx-background-color: #ffffff;" text="Registrar/Modificar Nota" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoEditar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="212.0" layoutY="450.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Editar Evaluaciones">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="EDITAR LOS PESOS DE LAS EVALUACIONES" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="650.0" layoutY="30.0" mnemonicParsing="false" onAction="#mostrarEvaluacionesAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="60.0" layoutY="120.0" text="Control de lectura:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="180.0" text="Laboratorio:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="240.0" text="Proyecto:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="300.0" text="Examen parcial:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="360.0" text="Examen final:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="377.0" layoutY="430.0" mnemonicParsing="false" onAction="#actualizarDatosEvaluacionAction" style="-fx-background-color: #ffffff;" text="Actualizar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoAceptar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="212.0" layoutY="430.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Cancelar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoCancelar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TextField fx:id="inputControlLectura" layoutX="260.0" layoutY="120.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
+                        <TextField fx:id="inputLaboratorio" layoutX="260.0" layoutY="180.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
+                        <TextField fx:id="inputExamenParcial" layoutX="260.0" layoutY="300.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
+                        <TextField fx:id="inputExamenFinal" layoutX="260.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
+                        <TextField fx:id="inputProyecto" layoutX="260.0" layoutY="240.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Registrar Alumno">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="REGISTRAR NUEVO ALUMNO" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="650.0" layoutY="30.0" mnemonicParsing="false" onAction="#mostrarAlumnosAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="60.0" layoutY="120.0" text="Código">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="180.0" text="Nombres">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="240.0" text="Apellidos">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="377.0" layoutY="430.0" mnemonicParsing="false" onAction="#registrarAlumnoAction" style="-fx-background-color: #ffffff;" text="Registrar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoAceptar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="212.0" layoutY="430.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Cancelar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoCancelar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TextField fx:id="inputCodigoAlumno" layoutX="260.0" layoutY="120.0" prefHeight="25.0" prefWidth="170.0" promptText="Código del Alumno" />
+                        <TextField fx:id="inputNombreAlumno" layoutX="260.0" layoutY="180.0" prefHeight="25.0" prefWidth="270.0" promptText="Nombres" />
+                        <TextField fx:id="inputApellidoAlumno" layoutX="260.0" layoutY="240.0" prefHeight="25.0" prefWidth="270.0" promptText="Apellidos" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="EditarNotas">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="EDITAR NOTAS" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="650.0" layoutY="30.0" mnemonicParsing="false" onAction="#mostrarEvaluacionesAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="60.0" layoutY="120.0" text="Alumno:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="180.0" text="Control de lectura">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="300.0" text="Proyecto:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="60.0" layoutY="360.0" text="Examen parcial:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="433.0" layoutY="360.0" text="Examen final:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="377.0" layoutY="430.0" mnemonicParsing="false" onAction="#registrarNotasAlumnoAction" style="-fx-background-color: #ffffff;" text="Registrar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoAceptar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="212.0" layoutY="430.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Cancelar" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoCancelar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TextField fx:id="inputNotaControl" layoutX="260.0" layoutY="180.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
+                        <TextField fx:id="inputNotaProyecto" layoutX="260.0" layoutY="300.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
+                        <TextField fx:id="inputNotaExamenParcial" layoutX="260.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
+                        <TextField fx:id="inputNotaLaboratorio" layoutX="260.0" layoutY="240.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
+                        <ComboBox fx:id="comboAlumnos" layoutX="260.0" layoutY="120.0" prefHeight="25.0" prefWidth="258.0" promptText="Lista de alumnos" />
+                        <Label layoutX="60.0" layoutY="240.0" text="Laboratorio:">
+                           <font>
+                              <Font name="Candara Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="inputNotaExamenFinal" layoutX="580.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Pane layoutX="192.0" layoutY="-1.0" prefHeight="122.0" prefWidth="758.0" style="-fx-background-color: #D3D3DE;">
+         <children>
+            <Label layoutX="222.0" layoutY="34.0" text="Sistema de Notas" textFill="#132972">
+               <font>
+                  <Font name="Candara Bold Italic" size="41.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
