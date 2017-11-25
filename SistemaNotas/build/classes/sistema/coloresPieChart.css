@@ -1,0 +1,3 @@
+/* Colors of JavaFX pie chart slices. */  
+.data0.chart-pie { -fx-pie-color: blue; }  
+.data1.chart-pie { -fx-pie-color: red; }  

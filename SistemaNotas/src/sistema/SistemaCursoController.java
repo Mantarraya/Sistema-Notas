@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
@@ -173,6 +174,9 @@ public class SistemaCursoController {
     private TextField inputNotaExamenFinal;
 
     @FXML
+    private PieChart pieChart;
+
+    @FXML
     void editarDatosAsignaturaAction(ActionEvent event) {
 
         System.out.println("Pestaña Editar Asignatura Seleccionada");
@@ -197,7 +201,7 @@ public class SistemaCursoController {
         String codigoAlumno = inputCodigoAlumno.getText();
         String nombreAlumno = inputNombreAlumno.getText();
         String apellidoAlumno = inputApellidoAlumno.getText();
-        establecerAlumno(codigoAlumno,nombreAlumno,apellidoAlumno);
+        establecerAlumno(codigoAlumno, nombreAlumno, apellidoAlumno);
         // Agregamos el nuevo  en la base de datos
         System.out.println("\n->->-> Registrando los datos del nuevo alumno en la tabla de Alumnos de la base de datos ... <-<-<-\n");
         //... COMPLETAR
@@ -209,8 +213,7 @@ public class SistemaCursoController {
         mostrarAlumnosAction(event);
 
     }
-    
-    
+
     @FXML
     void registrarNotasAlumnoAction(ActionEvent event) {
 
@@ -220,12 +223,9 @@ public class SistemaCursoController {
         String apellnotaProyecto = inputNotaProyecto.getText();
         String notaExamenParcial = inputNotaExamenFinal.getText();
         String notaExamenFinal = inputNotaExamenFinal.getText();
-        
-        
+
         //COMPLETAR
-        
         // Obtener la opcion seleccionada del combo box
-        
         // Agregamos el nuevo  en la base de datos
         System.out.println("\n->->-> Registrando las notas del alumno en la base de datos ... <-<-<-\n");
         //... COMPLETAR
@@ -238,8 +238,7 @@ public class SistemaCursoController {
         mostrarNotasAction(event);
 
     }
-            
-            
+
     @FXML
     void actualizarDatosProfesorAction(ActionEvent event) {
 
@@ -247,7 +246,7 @@ public class SistemaCursoController {
         String apellidoProfesor = inputApellidoProfesor.getText();
         String correoProfesor = inputCorreoProfesor.getText();
         String pagWebProfesor = inputPagWebProfesor.getText();
-        
+
         establecerNombreProfesor(nombreProfesor);
         establecerApellidoProfesor(apellidoProfesor);
         establecerCorreoProfesor(correoProfesor);
@@ -263,7 +262,7 @@ public class SistemaCursoController {
         // Actualizamos los datos del profesor en la base de datos
         System.out.println("\n->->-> Actualizando los datos del profesor en base la base de datos ... <-<-<-\n");
         //...
-        
+
         // Regresamos a la pestaña Pagina Personal
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(1);
@@ -275,19 +274,18 @@ public class SistemaCursoController {
     void actualizarDatosEvaluacionAction(ActionEvent event) {
 
         // Obtenemos los valores de entrada de la Asignatura
-        
         String controlLectura = inputControlLectura.getText();
         String laboratorio = inputLaboratorio.getText();
         String proyecto = inputProyecto.getText();
         String examenParcial = inputExamenParcial.getText();
         String examenFinal = inputExamenFinal.getText();
-        
-        establecerPeso("1",Double.parseDouble(controlLectura));
-        establecerPeso("2",Double.parseDouble(laboratorio));
-        establecerPeso("3",Double.parseDouble(proyecto));
-        establecerPeso("4",Double.parseDouble(examenParcial));
-        establecerPeso("5",Double.parseDouble(examenFinal));
-        
+
+        establecerPeso("1", Double.parseDouble(controlLectura));
+        establecerPeso("2", Double.parseDouble(laboratorio));
+        establecerPeso("3", Double.parseDouble(proyecto));
+        establecerPeso("4", Double.parseDouble(examenParcial));
+        establecerPeso("5", Double.parseDouble(examenFinal));
+
         // Actualizamos los datos del profesor en la base de datos
         System.out.println("\n->->-> Actualizando los datos de Evaluaciones en la base de datos ... <-<-<-\n");
         //... COMPLETAR
@@ -317,18 +315,18 @@ public class SistemaCursoController {
 
         // Actualizamos los datos del profesor en la base de datos
         System.out.println("\n->->-> Actualizando los datos de la Asignatura en la base de datos ... <-<-<-\n");
-        
+
         establecerNombreCurso(nombreAsignatura);
         establecerFacultadCurso(facultad);
         establecerEspecialidadCurso(especialidad);
         establecerPlanCurso(planAcademico);
         mostrarAsignaturaAction(event);
-        
+
         outputNombreAsignatura.setText(obtenerNombreCurso("1002"));
         outputEspecialidad.setText(obtenerEspecialidadCurso("1002"));
         outputFacultad.setText(obtenerFacultadCurso("1002"));
         outputPlanAcademico.setText(obtenerPlanCurso("1002"));
-        outputCodigoAsignatura.setText("1002"); 
+        outputCodigoAsignatura.setText("1002");
 
     }
 
@@ -367,8 +365,6 @@ public class SistemaCursoController {
                         "103 - Johnny Lopez",
                         "104 -Jean Sullon");
         comboAlumnos.setItems(options);
-        
-        
 
     }
 
@@ -394,7 +390,7 @@ public class SistemaCursoController {
         outputEspecialidad.setText(obtenerEspecialidadCurso("1002"));
         outputFacultad.setText(obtenerFacultadCurso("1002"));
         outputPlanAcademico.setText(obtenerPlanCurso("1002"));
-        outputCodigoAsignatura.setText("1002");              
+        outputCodigoAsignatura.setText("1002");
     }
 
     @FXML
@@ -403,7 +399,14 @@ public class SistemaCursoController {
         System.out.println("Pestaña Estadisticas Seleccionada");
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(3);
-
+        
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                new PieChart.Data("Aprobados", 13),
+                new PieChart.Data("Desaprobados", 25));
+                
+        pieChart.setData(pieChartData);
+        
     }
 
     @FXML
@@ -418,7 +421,7 @@ public class SistemaCursoController {
         outputCorreo.setText(obtenerCorreoProfesor("100"));
         outputPagWeb.setText(obtenerPaginaProfesor("100"));
         outputCodigo.setText("100");
-        
+
     }
 
     @FXML
@@ -431,11 +434,9 @@ public class SistemaCursoController {
         System.out.println("\n->->-> Obteniendo todos los datos de los alumnos de la base de datos ... <-<-<-\n");
 
         // COMPLETAR
-        
-        
         ObservableList<Alumno> listaAlumnos = FXCollections.observableArrayList();
-        listaAlumnos = obtenerListaalumnos();        
-                 
+        listaAlumnos = obtenerListaalumnos();
+
         /*ObservableList<Alumno> listaAlumnos = FXCollections.observableArrayList(
                 new Alumno("100", "Francisco", "Fabian"),
                 new Alumno("101", "Jose", "Perez"),
@@ -443,7 +444,6 @@ public class SistemaCursoController {
                 new Alumno("103", "Johnny", "Lopez"),
                 new Alumno("104", "Jean", "Sullon")
         );*/
-
         columnCodigo.setCellValueFactory(new PropertyValueFactory<Alumno, String>("codigo"));
         columnNombre.setCellValueFactory(new PropertyValueFactory<Alumno, String>("nombres"));
         columnApellido.setCellValueFactory(new PropertyValueFactory<Alumno, String>("apellidos"));
@@ -471,13 +471,13 @@ public class SistemaCursoController {
         System.out.println("\n->->-> Obteniendo los oesis de las evaluaciones de la base de datos ... <-<-<-\n");
         // Obtenemos los datos del profesor de la base de datos
         // COMPLETAR
-        
+
         outputControlLectura.setText(obtenerPeso("1"));
         outputLaboratorio.setText(obtenerPeso("2"));
         outputProyecto.setText(obtenerPeso("3"));
         outputExamenParcial.setText(obtenerPeso("4"));
         outputExamenFinal.setText(obtenerPeso("5"));
-        
+
     }
 
     @FXML
