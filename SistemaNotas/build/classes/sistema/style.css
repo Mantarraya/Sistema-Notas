@@ -1,0 +1,25 @@
+/* Colors of JavaFX pie chart slices. */  
+.data0.chart-pie { -fx-pie-color: red; }  
+.data1.chart-pie { -fx-pie-color: blue; }  
+
+
+.combo-box-base {
+    -fx-background-color: transparent, lightgrey, transparent, white;
+    -fx-background-radius: 0, 0, 0, 0;
+    -fx-padding: 0.166667em; /* 2 */
+}
+.combo-box-base:hover  {
+    -fx-background-color: transparent, #6699FF, transparent, transparent, white;
+}
+
+/*
+.text-field {
+    -fx-background-color: #a9a9a9 , white , white;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+}
+
+.text-field:focused {
+    -fx-background-color: #a9a9a9 , white , white;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+}
+*/

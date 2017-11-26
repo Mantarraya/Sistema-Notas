@@ -1,6 +1,7 @@
 package sistema;
 
 import java.util.Observable;
+import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -175,6 +176,18 @@ public class SistemaCursoController {
 
     @FXML
     private PieChart pieChart;
+
+    @FXML
+    private ComboBox<String> comboEvaluacion;
+
+    @FXML
+    private Label outputCantidad;
+
+    @FXML
+    private Label outputMedia;
+
+    @FXML
+    private Label outputMediana;
 
     @FXML
     void editarDatosAsignaturaAction(ActionEvent event) {
@@ -399,14 +412,58 @@ public class SistemaCursoController {
         System.out.println("Pestaña Estadisticas Seleccionada");
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(3);
-        
-        ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(
-                new PieChart.Data("Aprobados", 13),
-                new PieChart.Data("Desaprobados", 25));
-                
+
+        // Combo BOX de evaluaciones
+        ObservableList<String> options
+                = FXCollections.observableArrayList("Control de lectura", "Laboratorio",
+                        "Proyecto", "Examen Parcial", "Examen Final");
+
+        comboEvaluacion.setItems(options);
+
+        comboEvaluacion.getSelectionModel().selectFirst();
+
+    }
+
+    @FXML
+    void mostrarGraficoEstadisticaAction(ActionEvent event) {
+
+        // COMPLETAR
+        // Obtener las cantidades de alumnos aprobados y desaprobados desde la base de datos
+        // 0 -> Contro, 1 -> Laboratorio, 2 -> Proyecto, 3 -> Examen Parcial, 4 -> Examen Final
+        int opcionSelecionada = comboEvaluacion.getSelectionModel().getSelectedIndex();
+        System.out.println();
+
+        Random randomGenerator = new Random();
+        int numAprobados = randomGenerator.nextInt(20); // obtenerNumeroAprobados(opcionSelecionada+1);
+        int numDesprobados = randomGenerator.nextInt(20); // obtenerNumeroDesaprobados(opcionSelecionada+1);
+
+        // Grafica de las estadisticas
+        ObservableList<PieChart.Data> pieChartData
+                = FXCollections.observableArrayList(
+                        new PieChart.Data("Desaprobados", numDesprobados),
+                        new PieChart.Data("Aprobados", numAprobados));
+
         pieChart.setData(pieChartData);
-        
+
+        // COMPLETAR
+        //Calcular la cantidad de alumnos, media y mediana de una respectiva evaluacion
+        if (opcionSelecionada == 0) {
+            //outputCantidad.setText();
+            //outputMedia.setText();
+        } else if (opcionSelecionada == 1) {
+            //outputCantidad.setText();
+            //outputMedia.setText();
+        } else if (opcionSelecionada == 2) {
+            //outputCantidad.setText();
+            //outputMedia.setText();
+        } else if (opcionSelecionada == 3) {
+            //outputCantidad.setText();
+            //outputMedia.setText();
+        } else if (opcionSelecionada == 4) {
+            //outputCantidad.setText();
+            //outputMedia.setText();
+        }
+
     }
 
     @FXML

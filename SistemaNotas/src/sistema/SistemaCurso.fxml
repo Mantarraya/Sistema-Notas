@@ -19,15 +19,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistema.SistemaCursoController">
    <children>
-      <Pane layoutX="192.0" layoutY="-1.0" prefHeight="122.0" prefWidth="758.0" style="-fx-background-color: #7481D6;">
-         <children>
-            <Label layoutX="193.0" layoutY="37.0" text="SISTEMA DE NOTAS" textFill="WHITE">
-               <font>
-                  <Font name="Candara Bold Italic" size="41.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
       <Pane prefHeight="652.0" prefWidth="191.0" style="-fx-background-color: #7481D6;">
          <children>
             <Button layoutX="50.0" layoutY="200.0" mnemonicParsing="false" onAction="#mostrarPagPersonalAction" style="-fx-background-color: #7481D6;" text="Pagina Personal" textFill="WHITE">
@@ -377,7 +368,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <PieChart fx:id="pieChart" layoutX="29.0" layoutY="154.0" prefHeight="369.0" prefWidth="438.0" stylesheets="@coloresPieChart.css" />
+                        <PieChart fx:id="pieChart" layoutX="29.0" layoutY="154.0" prefHeight="369.0" prefWidth="438.0" stylesheets="@style.css" />
                         <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
                         <Label layoutX="60.0" layoutY="35.0" text="ESTADISTICAS" textFill="#0f00ff">
                            <font>
@@ -389,7 +380,37 @@
                               <Font name="Candara Italic" size="20.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="266.0" layoutY="104.0" prefHeight="25.0" prefWidth="155.0" />
+                        <ComboBox fx:id="comboEvaluacion" layoutX="266.0" layoutY="104.0" onAction="#mostrarGraficoEstadisticaAction" prefHeight="25.0" prefWidth="155.0" stylesheets="@style.css" />
+                        <Label layoutX="500.0" layoutY="220.0" text="Cantidad:">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="500.0" layoutY="270.0" text="Media:">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="500.0" layoutY="320.0" text="Mediana:">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputCantidad" layoutX="600.0" layoutY="220.0" text="outputCantidad">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputMedia" layoutX="600.0" layoutY="270.0" text="outputMedia">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="outputMediana" layoutX="600.0" layoutY="320.0" text="outputMediana">
+                           <font>
+                              <Font name="Candara Italic" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
               </content>
@@ -398,10 +419,10 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="inputNombreProfesor" layoutX="90.0" layoutY="120.0" prefHeight="37.0" prefWidth="224.0" promptText="Nombres" />
-                        <TextField fx:id="inputApellidoProfesor" layoutX="90.0" layoutY="180.0" prefHeight="37.0" prefWidth="224.0" promptText="Apellidos" />
-                        <TextField fx:id="inputCorreoProfesor" layoutX="90.0" layoutY="240.0" prefHeight="37.0" prefWidth="356.0" promptText="Correo electrónico" />
-                        <TextField fx:id="inputPagWebProfesor" layoutX="90.0" layoutY="300.0" prefHeight="37.0" prefWidth="356.0" promptText="Página web" />
+                        <TextField fx:id="inputNombreProfesor" layoutX="90.0" layoutY="120.0" prefHeight="37.0" prefWidth="224.0" promptText="Nombres" stylesheets="@style.css" />
+                        <TextField fx:id="inputApellidoProfesor" layoutX="90.0" layoutY="180.0" prefHeight="37.0" prefWidth="224.0" promptText="Apellidos" stylesheets="@style.css" />
+                        <TextField fx:id="inputCorreoProfesor" layoutX="90.0" layoutY="240.0" prefHeight="37.0" prefWidth="356.0" promptText="Correo electrónico" stylesheets="@style.css" />
+                        <TextField fx:id="inputPagWebProfesor" layoutX="90.0" layoutY="300.0" prefHeight="37.0" prefWidth="356.0" promptText="Página web" stylesheets="@style.css" />
                         <Button layoutX="377.0" layoutY="400.0" mnemonicParsing="false" onAction="#actualizarDatosProfesorAction" style="-fx-background-color: #ffffff;" text="Actualizar" textFill="#0f00ff">
                            <font>
                               <Font name="Candara" size="15.0" />
@@ -452,10 +473,9 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="inputNombreAsignatura" layoutX="90.0" layoutY="120.0" prefHeight="37.0" prefWidth="224.0" promptText="Nombre de la asignatura" />
-                        <TextField fx:id="inputCodigoAsignatura" layoutX="90.0" layoutY="180.0" prefHeight="37.0" prefWidth="224.0" promptText="Código de la asignatura" />
-                        <TextField fx:id="inputFacultad" layoutX="90.0" layoutY="240.0" prefHeight="37.0" prefWidth="221.0" promptText="Facultad" />
-                        <TextField fx:id="inputPlanAcademico" layoutX="90.0" layoutY="300.0" prefHeight="37.0" prefWidth="478.0" promptText="Plan académico" />
+                        <TextField fx:id="inputNombreAsignatura" layoutX="90.0" layoutY="120.0" prefHeight="37.0" prefWidth="224.0" promptText="Nombre de la asignatura" stylesheets="@style.css" />
+                        <TextField fx:id="inputFacultad" layoutX="90.0" layoutY="240.0" prefHeight="37.0" prefWidth="221.0" promptText="Facultad" stylesheets="@style.css" />
+                        <TextField fx:id="inputPlanAcademico" layoutX="90.0" layoutY="300.0" prefHeight="37.0" prefWidth="478.0" promptText="Plan académico" stylesheets="@style.css" />
                         <Button layoutX="377.0" layoutY="400.0" mnemonicParsing="false" onAction="#actualizarDatosAsignaturaAction" style="-fx-background-color: #ffffff;" text="Actualizar" textFill="#0f00ff">
                            <font>
                               <Font name="Candara" size="15.0" />
@@ -498,7 +518,7 @@
                               <Font name="Candara Bold Italic" size="28.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="inputEspecialidad" layoutX="346.0" layoutY="240.0" prefHeight="37.0" prefWidth="221.0" promptText="Especialidad" />
+                        <TextField fx:id="inputEspecialidad" layoutX="90.0" layoutY="180.0" prefHeight="37.0" prefWidth="221.0" promptText="Especialidad" stylesheets="@style.css" />
                      </children>
                   </AnchorPane>
                </content>
@@ -897,11 +917,11 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <TextField fx:id="inputControlLectura" layoutX="260.0" layoutY="120.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
-                        <TextField fx:id="inputLaboratorio" layoutX="260.0" layoutY="180.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
-                        <TextField fx:id="inputExamenParcial" layoutX="260.0" layoutY="300.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
-                        <TextField fx:id="inputExamenFinal" layoutX="260.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
-                        <TextField fx:id="inputProyecto" layoutX="260.0" layoutY="240.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" />
+                        <TextField fx:id="inputControlLectura" layoutX="260.0" layoutY="120.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" stylesheets="@style.css" />
+                        <TextField fx:id="inputLaboratorio" layoutX="260.0" layoutY="180.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" stylesheets="@style.css" />
+                        <TextField fx:id="inputExamenParcial" layoutX="260.0" layoutY="300.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" stylesheets="@style.css" />
+                        <TextField fx:id="inputExamenFinal" layoutX="260.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" stylesheets="@style.css" />
+                        <TextField fx:id="inputProyecto" layoutX="260.0" layoutY="240.0" prefHeight="25.0" prefWidth="121.0" promptText="Peso" stylesheets="@style.css" />
                      </children>
                   </AnchorPane>
                </content>
@@ -985,9 +1005,9 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <TextField fx:id="inputCodigoAlumno" layoutX="260.0" layoutY="120.0" prefHeight="25.0" prefWidth="170.0" promptText="Código del Alumno" />
-                        <TextField fx:id="inputNombreAlumno" layoutX="260.0" layoutY="180.0" prefHeight="25.0" prefWidth="270.0" promptText="Nombres" />
-                        <TextField fx:id="inputApellidoAlumno" layoutX="260.0" layoutY="240.0" prefHeight="25.0" prefWidth="270.0" promptText="Apellidos" />
+                        <TextField fx:id="inputCodigoAlumno" layoutX="260.0" layoutY="120.0" prefHeight="25.0" prefWidth="170.0" promptText="Código del Alumno" stylesheets="@style.css" />
+                        <TextField fx:id="inputNombreAlumno" layoutX="260.0" layoutY="180.0" prefHeight="25.0" prefWidth="270.0" promptText="Nombres" stylesheets="@style.css" />
+                        <TextField fx:id="inputApellidoAlumno" layoutX="260.0" layoutY="240.0" prefHeight="25.0" prefWidth="270.0" promptText="Apellidos" stylesheets="@style.css" />
                      </children>
                   </AnchorPane>
                </content>
@@ -1081,22 +1101,31 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <TextField fx:id="inputNotaControl" layoutX="260.0" layoutY="180.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
-                        <TextField fx:id="inputNotaProyecto" layoutX="260.0" layoutY="300.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
-                        <TextField fx:id="inputNotaExamenParcial" layoutX="260.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
-                        <TextField fx:id="inputNotaLaboratorio" layoutX="260.0" layoutY="240.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
-                        <ComboBox fx:id="comboAlumnos" layoutX="260.0" layoutY="120.0" prefHeight="25.0" prefWidth="258.0" promptText="Lista de alumnos" />
+                        <TextField fx:id="inputNotaControl" layoutX="260.0" layoutY="180.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" stylesheets="@style.css" />
+                        <TextField fx:id="inputNotaProyecto" layoutX="260.0" layoutY="300.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" stylesheets="@style.css" />
+                        <TextField fx:id="inputNotaExamenParcial" layoutX="260.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" stylesheets="@style.css" />
+                        <TextField fx:id="inputNotaLaboratorio" layoutX="260.0" layoutY="240.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" stylesheets="@style.css" />
+                        <ComboBox fx:id="comboAlumnos" layoutX="260.0" layoutY="120.0" prefHeight="25.0" prefWidth="258.0" promptText="Lista de alumnos" stylesheets="@style.css" />
                         <Label layoutX="60.0" layoutY="240.0" text="Laboratorio:">
                            <font>
                               <Font name="Candara Bold" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="inputNotaExamenFinal" layoutX="580.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" />
+                        <TextField fx:id="inputNotaExamenFinal" layoutX="580.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" stylesheets="@style.css" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
         </tabs>
       </TabPane>
+      <Pane layoutX="192.0" layoutY="-1.0" prefHeight="122.0" prefWidth="758.0" style="-fx-background-color: #7481D6;">
+         <children>
+            <Label layoutX="193.0" layoutY="37.0" text="SISTEMA DE NOTAS" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold Italic" size="41.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
