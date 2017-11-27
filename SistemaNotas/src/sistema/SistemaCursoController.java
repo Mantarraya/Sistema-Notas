@@ -1,22 +1,33 @@
 package sistema;
 
+import java.time.LocalDate;
 import java.util.Observable;
 import java.util.Random;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import static sistema.FuncionesSistemaNotas.*;
 
 public class SistemaCursoController {
@@ -190,6 +201,24 @@ public class SistemaCursoController {
     private Label outputMediana;
 
     @FXML
+    private ComboBox<String> comboFecha;
+
+    @FXML
+    private DatePicker datePicker;
+
+    @FXML
+    private TableView<Asistencia> tablaAsistencia;
+
+    @FXML
+    private TableColumn<Asistencia, String> columnCodigoAsistencia;
+
+    @FXML
+    private TableColumn<Asistencia, String> columnAlumnoAsistencia;
+
+    @FXML
+    private TableColumn<Asistencia, Boolean> columnMarcarAsistencia;
+
+    @FXML
     void editarDatosAsignaturaAction(ActionEvent event) {
 
         System.out.println("Pestaña Editar Asignatura Seleccionada");
@@ -225,6 +254,50 @@ public class SistemaCursoController {
         // Regresamos a la pestaña de Alumnos
         mostrarAlumnosAction(event);
 
+    }
+
+    @FXML
+    void registrarNuevaSesion(ActionEvent event) {
+
+        // Guardamos la fecha
+        datePicker.getValue();
+
+        String anio = String.format("%04d", datePicker.getValue().getYear());
+        String mes = String.format("%02d", datePicker.getValue().getMonthValue());
+        String dia = String.format("%02d", datePicker.getValue().getDayOfMonth());
+
+        System.out.println("Nueva sesion registrada en el comboBox: " + dia + "/" + mes + "/" + anio);
+
+        // COMPLETAR -- Registrar nueva fecha
+        System.out.println("->->-> Registrando nueva fecha de asistencia en la base de datos <-<-<-");
+        //registrarNuevafecha(anio, mes, dia);
+
+        mostrarAsistenciaAction(event);
+
+    }
+
+    @FXML
+    void registrarAsistencia(ActionEvent event) {
+
+        // Guardamos la fecha
+        ObservableList<Asistencia> listaAsistencia = FXCollections.observableArrayList();
+
+        listaAsistencia = tablaAsistencia.getItems();
+
+        String fechaAsistencia = comboFecha.getSelectionModel().getSelectedItem().toString();
+
+        /*       
+        System.out.println(fechaAsistencia);
+        System.out.println(listaAsistencia.get(0).getCodigo());
+        System.out.println(listaAsistencia.get(1).getCodigo()); 
+        System.out.println(listaAsistencia.get(0).getNombreAlumno());
+        System.out.println(listaAsistencia.get(1).getNombreAlumno());
+        System.out.println(listaAsistencia.get(0).getAsistio());
+        System.out.println(listaAsistencia.get(1).getAsistio());  
+         */
+        //COMPLETAR 
+        System.out.println("->->-> Actualizando/Registrando la asistencia de los alumnos de una sesion(fecha) en la base de datos <-<-<");
+        //registrarAsistenciaFecha(fechaAsistencia, listaAsistencia);
     }
 
     @FXML
@@ -264,21 +337,12 @@ public class SistemaCursoController {
         establecerApellidoProfesor(apellidoProfesor);
         establecerCorreoProfesor(correoProfesor);
         establecerPaginaProfesor(pagWebProfesor);
-        System.out.println("\nNombre Profesor: " + nombreProfesor);
-        System.out.println("Apellido Profesor: " + apellidoProfesor);
-        System.out.println("Correo Profesor: " + correoProfesor);
-        System.out.println("Pagina Web Profesor: " + pagWebProfesor);
-        outputNombreProfesor.setText(obtenerNombreProfesor("100"));
-        outputCorreo.setText(obtenerCorreoProfesor("100"));
-        outputPagWeb.setText(obtenerPaginaProfesor("100"));
-        outputCodigo.setText("100");
+
         // Actualizamos los datos del profesor en la base de datos
         System.out.println("\n->->-> Actualizando los datos del profesor en base la base de datos ... <-<-<-\n");
         //...
 
         // Regresamos a la pestaña Pagina Personal
-        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
-        selectionModel.select(1);
         mostrarPagPersonalAction(event);
 
     }
@@ -516,6 +580,44 @@ public class SistemaCursoController {
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(7);
 
+        // Combo BOX
+        ObservableList<String> options
+                = FXCollections.observableArrayList(
+                        "10/07/2017",
+                        "17/07/2017",
+                        "20/07/2017",
+                        "25/07/2017",
+                        "30/07/2017");
+        comboFecha.setItems(options);
+
+        comboFecha.getSelectionModel().selectFirst();
+
+        datePicker.setValue(LocalDate.now());
+
+    }
+
+    @FXML
+    void mostrarTablaAsistencia(ActionEvent event) {
+
+        /* COMPLETAR */
+        // Modificar lista Asistencia 
+        System.out.println(" ->->-> Obtener la lista de asistencia de una secion de la base de datos <-<-<-");
+        ObservableList<Asistencia> listaAsistencia = FXCollections.observableArrayList(
+                new Asistencia("101", "Francisco Fabian", true),
+                new Asistencia("102", "Jose Perez", true),
+                new Asistencia("103", "Jose Bejarano", false),
+                new Asistencia("104", "Johnny Lopez", false),
+                new Asistencia("105", "Jean Sullon", true)
+        );
+        // listaAsistencia = obtenerListaAsistencia('17/20/2017);
+
+        columnCodigoAsistencia.setCellValueFactory(new PropertyValueFactory<Asistencia, String>("codigo"));
+
+        columnAlumnoAsistencia.setCellValueFactory(new PropertyValueFactory<Asistencia, String>("nombreAlumno"));
+
+        asignarColumnaMarcarAsistencia(columnMarcarAsistencia);
+
+        tablaAsistencia.setItems(listaAsistencia);
     }
 
     @FXML
@@ -579,6 +681,40 @@ public class SistemaCursoController {
 
         System.out.println("Cerra Sesion");
         ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    private void asignarColumnaMarcarAsistencia(TableColumn<Asistencia, Boolean> columnMarcarAsistencia) {
+
+        columnMarcarAsistencia.setCellValueFactory(new Callback<CellDataFeatures<Asistencia, Boolean>, ObservableValue<Boolean>>() {
+
+            @Override
+            public ObservableValue<Boolean> call(CellDataFeatures<Asistencia, Boolean> param) {
+                Asistencia person = param.getValue();
+
+                SimpleBooleanProperty booleanProp = new SimpleBooleanProperty(person.getAsistio());
+
+                booleanProp.addListener(new ChangeListener<Boolean>() {
+
+                    @Override
+                    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue,
+                            Boolean newValue) {
+                        person.setAsistio(newValue);
+                    }
+                });
+                return booleanProp;
+            }
+        });
+
+        columnMarcarAsistencia.setCellFactory(new Callback<TableColumn<Asistencia, Boolean>, //
+                TableCell<Asistencia, Boolean>>() {
+            @Override
+            public TableCell<Asistencia, Boolean> call(TableColumn<Asistencia, Boolean> p) {
+                CheckBoxTableCell<Asistencia, Boolean> cell = new CheckBoxTableCell<Asistencia, Boolean>();
+                cell.setAlignment(Pos.CENTER);
+                return cell;
+            }
+        });
+
     }
 
 }
