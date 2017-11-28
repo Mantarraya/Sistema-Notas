@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Arrays;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -356,17 +357,17 @@ public class FuncionesSistemaNotas {
     public static String establecerAlumno(String cod, String nom, String ape) {
 
         try {
-            ResultSet rs = null, rs2 = null,rs3=null,rs4=null;
+            ResultSet rs = null, rs2 = null, rs3 = null, rs4 = null;
             Connection conn = null;
-            PreparedStatement pstmt = null, pstmt2 = null,pstmt3 =null,pstmt4=null,pstmt5=null;
+            PreparedStatement pstmt = null, pstmt2 = null, pstmt3 = null, pstmt4 = null, pstmt5 = null;
             conn = DriverManager.getConnection(URL_BASEDEDATOS, USUARIO, PASSWORD);
             String query = "INSERT INTO ALUMNO (ALU_COD,ALU_NOM,ALU_APE) VALUES (?,?,?) ";
-            String query2 = "INSERT INTO NOTA (NOT_ALU, NOT_ASI, NOT_SEC, NOT_SEM, NOT_EVA, NOT_NOT) VALUES " +
-                            "(?, '1002', '2', '2017-2', '1', 0)," +
-                            "(?, '1002', '2', '2017-2', '2', 0)," +
-                            "(?, '1002', '2', '2017-2', '3', 0)," +
-                            "(?, '1002', '2', '2017-2', '4', 0)," +
-                            "(?, '1002', '2', '2017-2', '5', 0)";            
+            String query2 = "INSERT INTO NOTA (NOT_ALU, NOT_ASI, NOT_SEC, NOT_SEM, NOT_EVA, NOT_NOT) VALUES "
+                    + "(?, '1002', '2', '2017-2', '1', 0),"
+                    + "(?, '1002', '2', '2017-2', '2', 0),"
+                    + "(?, '1002', '2', '2017-2', '3', 0),"
+                    + "(?, '1002', '2', '2017-2', '4', 0),"
+                    + "(?, '1002', '2', '2017-2', '5', 0)";
             pstmt = conn.prepareStatement(query);
             pstmt2 = conn.prepareStatement(query2);
             pstmt.setString(1, cod);
@@ -379,17 +380,17 @@ public class FuncionesSistemaNotas {
             pstmt2.setString(5, cod);
             pstmt.executeUpdate();
             pstmt2.executeUpdate();
-            String query5 ="INSERT INTO MATRICULA (MAT_ALU, MAT_ASI, MAT_SEC, MAT_SEM, MAT_PRO) VALUES (?, '1002', '2', '2017-2', '100')";
+            String query5 = "INSERT INTO MATRICULA (MAT_ALU, MAT_ASI, MAT_SEC, MAT_SEM, MAT_PRO) VALUES (?, '1002', '2', '2017-2', '100')";
             pstmt5 = conn.prepareStatement(query5);
             pstmt5.setString(1, cod);
             pstmt5.executeUpdate();
             String query3 = "SELECT AST_FEC FROM ASISTENCIA WHERE AST_ALU = '15200900' ";
             pstmt3 = conn.prepareStatement(query3);
-            rs3 = pstmt3.executeQuery();            
-            while (rs3.next()) {                                
-                String sesion = rs3.getString("AST_FEC"); 
-                String query4 = "INSERT INTO ASISTENCIA (AST_ALU,AST_ASI,AST_SEC,AST_SEM,AST_FEC,AST_REG) VALUES"+
-                        "(?, '1002', '2', '2017-2', ?, false)";
+            rs3 = pstmt3.executeQuery();
+            while (rs3.next()) {
+                String sesion = rs3.getString("AST_FEC");
+                String query4 = "INSERT INTO ASISTENCIA (AST_ALU,AST_ASI,AST_SEC,AST_SEM,AST_FEC,AST_REG) VALUES"
+                        + "(?, '1002', '2', '2017-2', ?, false)";
                 pstmt4 = conn.prepareStatement(query4);
                 pstmt4.setString(1, cod);
                 pstmt4.setString(2, sesion);
@@ -439,8 +440,8 @@ public class FuncionesSistemaNotas {
         }
         return null;
     }
-    
-    public static String establecerNota(String notacod,String alumnocod, int not) {
+
+    public static String establecerNota(String notacod, String alumnocod, int not) {
 
         try {
             ResultSet rs = null;
@@ -449,7 +450,7 @@ public class FuncionesSistemaNotas {
             conn = DriverManager.getConnection(URL_BASEDEDATOS, USUARIO, PASSWORD);
             String query = "UPDATE NOTA SET NOT_NOT = ? WHERE NOT_ALU=? AND NOT_SEC='2' AND NOT_ASI='1002' AND NOT_SEM='2017-2' AND NOT_EVA=?";
             pstmt = conn.prepareStatement(query);
-            pstmt.setInt(1,not);
+            pstmt.setInt(1, not);
             pstmt.setString(2, alumnocod);
             pstmt.setString(3, notacod);
             pstmt.executeUpdate();
@@ -459,7 +460,7 @@ public class FuncionesSistemaNotas {
         }
         return null;
     }
-    
+
     public static ObservableList<NotaAlumno> obtenerNotasalumnos() {
 
         try {
@@ -522,7 +523,7 @@ public class FuncionesSistemaNotas {
 
     }
 
-     public static ObservableList<String> obtenerSesiones() {
+    public static ObservableList<String> obtenerSesiones() {
 
         try {
 
@@ -543,9 +544,9 @@ public class FuncionesSistemaNotas {
 
             /* Obtenemos los datos seleccionados */
             ObservableList<String> sesiones = FXCollections.observableArrayList();
-            while (rs.next()) {                                
-                String sesion = rs.getString("AST_FEC"); 
-                sesiones.add(sesion);            
+            while (rs.next()) {
+                String sesion = rs.getString("AST_FEC");
+                sesiones.add(sesion);
             }
             return sesiones;
         } catch (Exception e) {
@@ -556,6 +557,7 @@ public class FuncionesSistemaNotas {
         return null;
 
     }
+
     // Juan Tomairo
     public static int obtenerNotaEvaluacionAlumno(String codAlumno, String codEvaluacion) {
 
@@ -579,7 +581,7 @@ public class FuncionesSistemaNotas {
         }
         return 0;
     }
-    
+
     public static String establecerSesion(String sesion) {
 
         try {
@@ -601,19 +603,17 @@ public class FuncionesSistemaNotas {
             rs = pstmt.executeQuery();
 
             /* Obtenemos los datos seleccionados */
-            
-
             while (rs.next()) {
 
                 String codigo = rs.getString("ALU_COD");
-                query2 = "INSERT INTO ASISTENCIA (AST_ALU,AST_ASI,AST_SEC,AST_SEM,AST_FEC,AST_REG) VALUES\n" +
-                            "(?, '1002', '2', '2017-2', ?, false) ";
+                query2 = "INSERT INTO ASISTENCIA (AST_ALU,AST_ASI,AST_SEC,AST_SEM,AST_FEC,AST_REG) VALUES\n"
+                        + "(?, '1002', '2', '2017-2', ?, false) ";
                 pstmt2 = conn.prepareStatement(query2);
                 pstmt2.setString(1, codigo);
                 pstmt2.setString(2, sesion);
                 pstmt2.executeUpdate();
-                
-                }                           
+
+            }
 
         } catch (Exception e) {
             System.out.println(e);
@@ -628,9 +628,9 @@ public class FuncionesSistemaNotas {
 
         try {
 
-            ResultSet rs = null, rs2= null;
+            ResultSet rs = null, rs2 = null;
             Connection conn = null;
-            PreparedStatement pstmt = null,pstmt2 =null;
+            PreparedStatement pstmt = null, pstmt2 = null;
 
             /* Preparamos la conexion hacia la base de datos */
             conn = DriverManager.getConnection(URL_BASEDEDATOS, USUARIO, PASSWORD);
@@ -649,21 +649,20 @@ public class FuncionesSistemaNotas {
 
                 String codigo = rs.getString("ALU_COD");
                 String nombre = rs.getString("ALU_NOM");
-                String apellido = rs.getString("ALU_APE");                
+                String apellido = rs.getString("ALU_APE");
                 String query2 = "SELECT AST_REG FROM ASISTENCIA WHERE AST_ALU = ? AND  AST_FEC = ? ";
                 pstmt2 = conn.prepareStatement(query2);
                 pstmt2.setString(1, codigo);
                 pstmt2.setString(2, sesion);
-               
+
                 rs2 = pstmt2.executeQuery();
-               
-                while (rs2.next()){
-                    boolean asis = rs2.getBoolean(1); 
-                    Asistencia asistencia = new Asistencia(codigo, nombre+" "+apellido,asis);
+
+                while (rs2.next()) {
+                    boolean asis = rs2.getBoolean(1);
+                    Asistencia asistencia = new Asistencia(codigo, nombre + " " + apellido, asis);
                     listaasistencia.add(asistencia);
                 }
-               
-                
+
             }
             return listaasistencia;
         } catch (Exception e) {
@@ -674,8 +673,8 @@ public class FuncionesSistemaNotas {
         return null;
 
     }
-    
-    public static String establecerAsistencia(String alucod, boolean reg,String sesion) {
+
+    public static String establecerAsistencia(String alucod, boolean reg, String sesion) {
 
         try {
             ResultSet rs = null;
@@ -683,8 +682,8 @@ public class FuncionesSistemaNotas {
             PreparedStatement pstmt = null;
             conn = DriverManager.getConnection(URL_BASEDEDATOS, USUARIO, PASSWORD);
             String query = "UPDATE ASISTENCIA SET AST_REG = ? WHERE AST_ALU= ? AND AST_FEC = ?";
-            pstmt = conn.prepareStatement(query);            
-            pstmt.setBoolean(1,reg);            
+            pstmt = conn.prepareStatement(query);
+            pstmt.setBoolean(1, reg);
             pstmt.setString(2, alucod);
             pstmt.setString(3, sesion);
             pstmt.executeUpdate();
@@ -694,4 +693,148 @@ public class FuncionesSistemaNotas {
         }
         return null;
     }
+
+    // Juan Tomairo
+    public static int obtenerNumeroAprobados(String codEvaluacion) {
+
+        try {
+            ResultSet rs = null;
+            Connection conn = null;
+            PreparedStatement pstmt = null;
+            conn = DriverManager.getConnection(URL_BASEDEDATOS, USUARIO, PASSWORD);
+            String query = "SELECT COUNT(*) AS total from NOTA WHERE NOT_EVA = ? and NOT_NOT >= 11";
+            pstmt = conn.prepareStatement(query);
+
+            pstmt.setString(1, codEvaluacion);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int cantAprobados = rs.getInt("total");
+                return cantAprobados;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    // Juan Tomairo
+    public static int obtenerNumeroDesaprobados(String codEvaluacion) {
+
+        try {
+            ResultSet rs = null;
+            Connection conn = null;
+            PreparedStatement pstmt = null;
+            conn = DriverManager.getConnection(URL_BASEDEDATOS, USUARIO, PASSWORD);
+            String query = "SELECT COUNT(*) AS total from NOTA WHERE NOT_EVA = ? and NOT_NOT < 11";
+            pstmt = conn.prepareStatement(query);
+
+            pstmt.setString(1, codEvaluacion);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int cantDesaprobados = rs.getInt("total");
+                return cantDesaprobados;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    // Juan Tomairo
+    public static double obtenerMedia(String codEvaluacion) {
+
+        try {
+            ResultSet rs = null;
+            Connection conn = null;
+            PreparedStatement pstmt = null;
+            conn = DriverManager.getConnection(URL_BASEDEDATOS, USUARIO, PASSWORD);
+            String query = "SELECT NOT_NOT from NOTA WHERE NOT_EVA = ?";
+            pstmt = conn.prepareStatement(query);
+
+            pstmt.setString(1, codEvaluacion);
+
+            rs = pstmt.executeQuery();
+
+            int nA = obtenerNumeroAprobados(codEvaluacion);
+            int nD = obtenerNumeroDesaprobados(codEvaluacion);
+
+            double[] arrNota = new double[nA + nD];
+
+            int i = 0;
+            while (rs.next()) {
+
+                int nota = rs.getInt("NOT_NOT");
+
+                arrNota[i] = nota;
+                i++;
+
+            }
+
+            return getMedia(arrNota);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    // Juan Tomairo
+    public static double obtenerMediana(String codEvaluacion) {
+
+        try {
+            ResultSet rs = null;
+            Connection conn = null;
+            PreparedStatement pstmt = null;
+            conn = DriverManager.getConnection(URL_BASEDEDATOS, USUARIO, PASSWORD);
+            String query = "SELECT NOT_NOT from NOTA WHERE NOT_EVA = ?";
+            pstmt = conn.prepareStatement(query);
+
+            pstmt.setString(1, codEvaluacion);
+
+            rs = pstmt.executeQuery();
+
+            int nA = obtenerNumeroAprobados(codEvaluacion);
+            int nD = obtenerNumeroDesaprobados(codEvaluacion);
+
+            double[] arrNota = new double[nA + nD];
+
+            int i = 0;
+            while (rs.next()) {
+
+                int nota = rs.getInt("NOT_NOT");
+
+                arrNota[i] = nota;
+                i++;
+
+            }
+
+            return getMedian(arrNota);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public static double getMedia(double[] data) {
+        double sum = 0.0;
+
+        for (int i = 0; i < data.length; i++) {
+            sum = sum + data[i];
+        }
+        double average = sum / data.length;;
+        return average;
+    }
+
+    public static double getMedian(double[] m) {
+
+        Arrays.sort(m);
+        int middle = m.length / 2;
+        if (m.length % 2 == 1) {
+            return m[middle];
+        } else {
+            return (m[middle - 1] + m[middle]) / 2.0;
+        }
+    }
+
 }

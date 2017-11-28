@@ -219,6 +219,21 @@ public class SistemaCursoController {
     private TableColumn<Asistencia, Boolean> columnMarcarAsistencia;
 
     @FXML
+    private TableView<Promedio> tablePromedio;
+
+    @FXML
+    private TableColumn<Promedio, String> columCodigoPromedio;
+
+    @FXML
+    private TableColumn<Promedio, String> columnNombrePromedio;
+
+    @FXML
+    private TableColumn<Promedio, String> columnApellidoPromedio;
+
+    @FXML
+    private TableColumn<Promedio, Double> columnNotaPromedio;
+
+    @FXML
     void editarDatosAsignaturaAction(ActionEvent event) {
 
         System.out.println("Pestaña Editar Asignatura Seleccionada");
@@ -265,9 +280,9 @@ public class SistemaCursoController {
         String anio = String.format("%04d", datePicker.getValue().getYear());
         String mes = String.format("%02d", datePicker.getValue().getMonthValue());
         String dia = String.format("%02d", datePicker.getValue().getDayOfMonth());
-        
-        String sesion = dia+"/"+mes+"/"+anio;
-        
+
+        String sesion = dia + "/" + mes + "/" + anio;
+
         establecerSesion(sesion);
 
         System.out.println("Nueva sesion registrada en el comboBox: " + dia + "/" + mes + "/" + anio);
@@ -289,11 +304,11 @@ public class SistemaCursoController {
         listaAsistencia = tablaAsistencia.getItems();
 
         String fechaAsistencia = comboFecha.getValue();
-        
-        for(Asistencia x:listaAsistencia){
-            establecerAsistencia(x.getCodigo(),x.getAsistio(),fechaAsistencia);
+
+        for (Asistencia x : listaAsistencia) {
+            establecerAsistencia(x.getCodigo(), x.getAsistio(), fechaAsistencia);
         }
-            
+
 
         /*       
         System.out.println(fechaAsistencia);
@@ -318,14 +333,14 @@ public class SistemaCursoController {
         String apellnotaProyecto = inputNotaProyecto.getText();
         String notaExamenParcial = inputNotaExamenFinal.getText();
         String notaExamenFinal = inputNotaExamenFinal.getText();
-        
+
         String codigoAlumno = comboAlumnos.getValue().substring(0, 8);
-       
-        establecerNota("1",codigoAlumno,Integer.parseInt(notaControl));
-        establecerNota("2",codigoAlumno,Integer.parseInt(notaLaboratorio));
-        establecerNota("3",codigoAlumno,Integer.parseInt(apellnotaProyecto));
-        establecerNota("4",codigoAlumno,Integer.parseInt(notaExamenParcial));
-        establecerNota("5",codigoAlumno,Integer.parseInt(notaExamenFinal));
+
+        establecerNota("1", codigoAlumno, Integer.parseInt(notaControl));
+        establecerNota("2", codigoAlumno, Integer.parseInt(notaLaboratorio));
+        establecerNota("3", codigoAlumno, Integer.parseInt(apellnotaProyecto));
+        establecerNota("4", codigoAlumno, Integer.parseInt(notaExamenParcial));
+        establecerNota("5", codigoAlumno, Integer.parseInt(notaExamenFinal));
         //COMPLETAR
         // Obtener la opcion seleccionada del combo box
         // Agregamos el nuevo  en la base de datos
@@ -437,7 +452,7 @@ public class SistemaCursoController {
     @FXML
     void mostrarRegistroNotasAction(ActionEvent event) {
 
-        System.out.println("Pestaña Registrar Notas ALumno Nuevo Seleccionada");
+        System.out.println("Pestaña Registrar Notas Alumno Nuevo Seleccionada");
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(12);
 
@@ -456,18 +471,7 @@ public class SistemaCursoController {
         if (alumnoSelecionado == null) {
             return;
         }
-        String codigoAlumno = alumnoSelecionado.substring(0, 8); // codigo
 
-        System.out.println("->->-> Actualizando notas del alumno en la base de datos <-<-<-");
-        // Boton Registrar - Notas Alumnos
-        // COMPLETAR
-        /*
-        actualizarNotaEvaluacionAlumno(codigoAlumno, "1", inputNotaControl.getText());
-        actualizarNotaEvaluacionAlumno(codigoAlumno, "2", inputNotaLaboratorio.getText());
-        actualizarNotaEvaluacionAlumno(codigoAlumno, "3", inputNotaProyecto.getText());
-        actualizarNotaEvaluacionAlumno(codigoAlumno, "4", inputNotaExamenParcial.getText());
-        actualizarNotaEvaluacionAlumno(codigoAlumno, "5", inputNotaExamenFinal.getText());
-         */
     }
 
     @FXML
@@ -479,7 +483,7 @@ public class SistemaCursoController {
         selectionModel.select(12);
 
         String alumnoSeleccionado = comboAlumnos.getSelectionModel().getSelectedItem();
-        
+
         if (alumnoSeleccionado == null) {
             return;
         }
@@ -553,11 +557,10 @@ public class SistemaCursoController {
         // Obtener las cantidades de alumnos aprobados y desaprobados desde la base de datos
         // 0 -> Contro, 1 -> Laboratorio, 2 -> Proyecto, 3 -> Examen Parcial, 4 -> Examen Final
         int opcionSelecionada = comboEvaluacion.getSelectionModel().getSelectedIndex();
-        System.out.println();
+        opcionSelecionada += 1;
 
-        Random randomGenerator = new Random();
-        int numAprobados = randomGenerator.nextInt(20); // obtenerNumeroAprobados(opcionSelecionada+1);
-        int numDesprobados = randomGenerator.nextInt(20); // obtenerNumeroDesaprobados(opcionSelecionada+1);
+        int numAprobados = obtenerNumeroAprobados(String.valueOf(opcionSelecionada));
+        int numDesprobados = obtenerNumeroDesaprobados(String.valueOf(opcionSelecionada));
 
         // Grafica de las estadisticas
         ObservableList<PieChart.Data> pieChartData
@@ -569,21 +572,23 @@ public class SistemaCursoController {
 
         // COMPLETAR
         //Calcular la cantidad de alumnos, media y mediana de una respectiva evaluacion
-        if (opcionSelecionada == 0) {
-            //outputCantidad.setText();
-            //outputMedia.setText();
-        } else if (opcionSelecionada == 1) {
-            //outputCantidad.setText();
-            //outputMedia.setText();
+        outputCantidad.setText(String.valueOf(numAprobados + numDesprobados));
+
+        if (opcionSelecionada == 1) {
+            outputMedia.setText(String.format("%.2f", obtenerMedia("1")));
+            outputMediana.setText(String.format("%.2f", obtenerMediana("1")));
         } else if (opcionSelecionada == 2) {
-            //outputCantidad.setText();
-            //outputMedia.setText();
+            outputMedia.setText(String.format("%.2f", obtenerMedia("2")));
+            outputMediana.setText(String.format("%.2f", obtenerMediana("2")));
         } else if (opcionSelecionada == 3) {
-            //outputCantidad.setText();
-            //outputMedia.setText();
+            outputMedia.setText(String.format("%.2f", obtenerMedia("3")));
+            outputMediana.setText(String.format("%.2f", obtenerMediana("3")));
         } else if (opcionSelecionada == 4) {
-            //outputCantidad.setText();
-            //outputMedia.setText();
+            outputMedia.setText(String.format("%.2f", obtenerMedia("4")));
+            outputMediana.setText(String.format("%.2f", obtenerMediana("4")));
+        } else if (opcionSelecionada == 5) {
+            outputMedia.setText(String.format("%.2f", obtenerMedia("5")));
+            outputMediana.setText(String.format("%.2f", obtenerMediana("5")));
         }
 
     }
@@ -600,6 +605,34 @@ public class SistemaCursoController {
         outputCorreo.setText(obtenerCorreoProfesor("100"));
         outputPagWeb.setText(obtenerPaginaProfesor("100"));
         outputCodigo.setText("100");
+
+    }
+
+    @FXML
+    void mostrarPromediosAction(ActionEvent event) {
+
+        System.out.println("Pestaña Promedio Seleccionada");
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(13);
+
+        System.out.println("\n->->-> Obteniendo los promedios de cada alumno de la base de datos ... <-<-<-\n");
+
+        // COMPLETAR
+        //ObservableList<Promedio> listaPromedios = FXCollections.observableArrayList();
+        //listaPromedios = obtenerPromedios();
+        ObservableList<Promedio> listaPromedio = FXCollections.observableArrayList(
+                new Promedio("100", "Francisco", "Fabian", 10.5),
+                new Promedio("101", "Jose", "Perez", 11.5),
+                new Promedio("102", "Jose", "Bejarano", 14.0),
+                new Promedio("103", "Johnny", "Lopez", 8.6),
+                new Promedio("104", "Jean", "Sullon", 11.4)
+        );
+
+        columCodigoPromedio.setCellValueFactory(new PropertyValueFactory<Promedio, String>("codigo"));
+        columnNombrePromedio.setCellValueFactory(new PropertyValueFactory<Promedio, String>("nombre"));
+        columnApellidoPromedio.setCellValueFactory(new PropertyValueFactory<Promedio, String>("apellido"));
+        columnNotaPromedio.setCellValueFactory(new PropertyValueFactory<Promedio, Double>("promedio"));
+        tablePromedio.setItems(listaPromedio);
 
     }
 

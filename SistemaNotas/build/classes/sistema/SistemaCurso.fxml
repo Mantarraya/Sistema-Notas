@@ -839,7 +839,7 @@
                               <TableColumn fx:id="columnExamenFinal" prefWidth="107.0" text="Examen Final" />
                            </columns>
                         </TableView>
-                        <Button layoutX="347.0" layoutY="450.0" mnemonicParsing="false" onAction="#mostrarRegistroNotasAction" style="-fx-background-color: #ffffff;" text="Registrar/Modificar Nota" textFill="#0f00ff">
+                        <Button layoutX="249.0" layoutY="450.0" mnemonicParsing="false" onAction="#mostrarRegistroNotasAction" style="-fx-background-color: #ffffff;" text="Registrar/Modificar Nota" textFill="#0f00ff">
                            <font>
                               <Font name="Candara" size="15.0" />
                            </font>
@@ -857,7 +857,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="212.0" layoutY="450.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                        <Button layoutX="110.0" layoutY="450.0" mnemonicParsing="false" onAction="#mostrarAsignaturaAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
                            <font>
                               <Font name="Candara" size="15.0" />
                            </font>
@@ -868,6 +868,24 @@
                               <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="497.0" layoutY="450.0" mnemonicParsing="false" onAction="#mostrarPromediosAction" style="-fx-background-color: #ffffff;" text="Promedios" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoPromedio.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="DEFAULT" />
@@ -1163,6 +1181,64 @@
                            </font>
                         </Label>
                         <TextField fx:id="inputNotaExamenFinal" layoutX="580.0" layoutY="360.0" prefHeight="25.0" prefWidth="121.0" promptText="nota" stylesheets="@style.css" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Promedios">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Separator layoutY="90.0" prefHeight="2.0" prefWidth="757.0" />
+                        <Label layoutX="60.0" layoutY="35.0" text="PROMEDIOS FINALES" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara Bold Italic" size="28.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="650.0" layoutY="30.0" mnemonicParsing="false" onAction="#mostrarNotasAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button layoutX="309.0" layoutY="450.0" mnemonicParsing="false" onAction="#mostrarNotasAction" style="-fx-background-color: #ffffff;" text="Volver" textFill="#0f00ff">
+                           <font>
+                              <Font name="Candara" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/iconoVolver.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TableView fx:id="tablePromedio" layoutX="120.0" layoutY="112.0" prefHeight="324.0" prefWidth="521.0">
+                          <columns>
+                            <TableColumn fx:id="columCodigoPromedio" prefWidth="91.0" text="Codigo" />
+                            <TableColumn fx:id="columnNombrePromedio" prefWidth="112.33334350585938" text="Nombres" />
+                              <TableColumn fx:id="columnApellidoPromedio" prefWidth="206.33331298828125" text="Apellidos" />
+                              <TableColumn fx:id="columnNotaPromedio" prefWidth="109.66668701171875" text="Promedio" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
                </content>
