@@ -475,8 +475,9 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="inputNombreAsignatura" layoutX="90.0" layoutY="120.0" prefHeight="37.0" prefWidth="224.0" promptText="Nombre de la asignatura" stylesheets="@style.css" />
+                        <TextField fx:id="inputEspecialidad" layoutX="90.0" layoutY="180.0" prefHeight="37.0" prefWidth="221.0" promptText="Especialidad" stylesheets="@style.css" />
                         <TextField fx:id="inputFacultad" layoutX="90.0" layoutY="240.0" prefHeight="37.0" prefWidth="221.0" promptText="Facultad" stylesheets="@style.css" />
-                        <TextField fx:id="inputPlanAcademico" layoutX="90.0" layoutY="300.0" prefHeight="37.0" prefWidth="478.0" promptText="Plan académico" stylesheets="@style.css" />
+                        <TextField fx:id="inputPlanAcademico" layoutX="90.0" layoutY="300.0" prefHeight="37.0" prefWidth="223.0" promptText="Plan académico" stylesheets="@style.css" />
                         <Button layoutX="377.0" layoutY="400.0" mnemonicParsing="false" onAction="#actualizarDatosAsignaturaAction" style="-fx-background-color: #ffffff;" text="Actualizar" textFill="#0f00ff">
                            <font>
                               <Font name="Candara" size="15.0" />
@@ -519,7 +520,6 @@
                               <Font name="Candara Bold Italic" size="28.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="inputEspecialidad" layoutX="90.0" layoutY="180.0" prefHeight="37.0" prefWidth="221.0" promptText="Especialidad" stylesheets="@style.css" />
                      </children>
                   </AnchorPane>
                </content>

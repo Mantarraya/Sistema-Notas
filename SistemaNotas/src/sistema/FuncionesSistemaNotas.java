@@ -94,8 +94,7 @@ public class FuncionesSistemaNotas {
         }
         return null;
     }
-    
-    
+   
     public static String establecerNombreProfesor(String nombre) {
 
         try {
@@ -374,6 +373,7 @@ public class FuncionesSistemaNotas {
         }
         return null;
     }
+    
     public static String obtenerPeso(String notacod) {
 
         try {
@@ -411,6 +411,68 @@ public class FuncionesSistemaNotas {
             System.out.println(e);
         }
         return null;
+    }
+    
+    public static ObservableList<NotaAlumno> obtenerNotasalumnos() {
+
+        try {
+
+            ResultSet rs = null,rs2 = null, rs3 = null;
+            Connection conn = null;
+            PreparedStatement pstmt = null,pstmt2= null, pstmt3 = null;
+            String query2,query3;
+
+            /* Preparamos la conexion hacia la base de datos */
+            conn = DriverManager.getConnection(URL_BASEDEDATOS, USUARIO, PASSWORD);
+
+            /* Preparamos la sentencia SQL a ejecutar */
+            String query = "SELECT ALU_COD, ALU_NOM, ALU_APE FROM ALUMNO ";
+
+            pstmt = conn.prepareStatement(query);
+
+            /* Ejecutamos la sentencia SQL */
+            rs = pstmt.executeQuery();
+
+            /* Obtenemos los datos seleccionados */
+            ObservableList<NotaAlumno> listanotas = FXCollections.observableArrayList();
+
+            while (rs.next()) {
+
+                String codigo = rs.getString("ALU_COD");
+                String nombre = rs.getString("ALU_NOM");
+                String apellido = rs.getString("ALU_APE");
+                
+                query2 = "SELECT EVA_COD FROM EVALUACION ";
+                pstmt2 = conn.prepareStatement(query2);
+                rs2 = pstmt2.executeQuery();
+                int i=0;
+                int not[]={0,0,0,0,0};
+                while (rs2.next()){
+                    String evaluacion = rs2.getString("EVA_COD");
+                    query3 = "SELECT NOT_NOT FROM NOTA WHERE NOT_ALU=? AND NOT_SEC='2' AND NOT_ASI='1002' AND NOT_SEM='2017-2' AND NOT_EVA=?";
+                    pstmt3 = conn.prepareStatement(query3);
+                    pstmt3.setString(1, codigo);
+                    pstmt3.setString(2, evaluacion);
+                    rs3 = pstmt3.executeQuery();                    
+                    while (rs3.next()){
+                        int nota = rs3.getInt("NOT_NOT");
+                        not[i]=nota;
+                    }
+                    i++;                   
+                }             
+                NotaAlumno notaalumno = new NotaAlumno(codigo, nombre, apellido,not[0],not[1],not[2],not[3],not[4]);
+                listanotas.add(notaalumno);
+            }
+
+            return listanotas;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        /* Si no encontro ningun dato, retornamos null */
+        return null;
+
     }
 }
 

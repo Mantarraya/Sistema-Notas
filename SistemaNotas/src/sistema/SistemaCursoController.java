@@ -376,16 +376,14 @@ public class SistemaCursoController {
 
     @FXML
     void actualizarDatosAsignaturaAction(ActionEvent event) {
-
+        System.out.println("eoorr");
         // Obtenemos los valores de entrada de la Asignatura
         String nombreAsignatura = inputNombreAsignatura.getText();
-        String codigoAsignatura = inputCodigoAsignatura.getText();
         String facultad = inputFacultad.getText();
         String especialidad = inputEspecialidad.getText();
         String planAcademico = inputPlanAcademico.getText();
 
-        System.out.println("\nNombre Asignatura: " + nombreAsignatura);
-        System.out.println("Codigo Profesor: " + codigoAsignatura);
+        System.out.println("\nNombre Asignatura: " + nombreAsignatura);     
         System.out.println("Facultad: " + facultad);
         System.out.println("Especialidad: " + especialidad);
         System.out.println("Plan Academico: " + planAcademico);
@@ -397,13 +395,8 @@ public class SistemaCursoController {
         establecerFacultadCurso(facultad);
         establecerEspecialidadCurso(especialidad);
         establecerPlanCurso(planAcademico);
+        
         mostrarAsignaturaAction(event);
-
-        outputNombreAsignatura.setText(obtenerNombreCurso("1002"));
-        outputEspecialidad.setText(obtenerEspecialidadCurso("1002"));
-        outputFacultad.setText(obtenerFacultadCurso("1002"));
-        outputPlanAcademico.setText(obtenerPlanCurso("1002"));
-        outputCodigoAsignatura.setText("1002");
 
     }
 
@@ -426,7 +419,6 @@ public class SistemaCursoController {
     }
 
     @FXML
-
     void mostrarRegistroNotasAction(ActionEvent event) {
 
         System.out.println("Pestaña Registrar Notas ALumno Nuevo Seleccionada");
@@ -649,19 +641,17 @@ public class SistemaCursoController {
         System.out.println("\n->->-> Obteniendo todos los datos de los notas de los alumnos de la base de datos ... <-<-<-\n");
 
         // COMPLETAR
-        /*
+
+        ObservableList<NotaAlumno> notaAlumnos = FXCollections.observableArrayList();
+        notaAlumnos = obtenerNotasalumnos();        
         
-        ObservableList<Alumno> listaAlumnos = FXCollections.observableArrayList();
-        listaAlumnos = obtenerListaAlumnos();        
-        
-         */
-        ObservableList<NotaAlumno> listaNotaAlumnos = FXCollections.observableArrayList(
+        /*ObservableList<NotaAlumno> listaNotaAlumnos = FXCollections.observableArrayList(
                 new NotaAlumno("100", "Francisco", "Fabian", 10, 11, 12, 13, 14),
                 new NotaAlumno("101", "Jose", "Perez", 14, 13, 12, 15, 14),
                 new NotaAlumno("102", "Jose", "Bejarano", 11, 11, 20, 13, 12),
                 new NotaAlumno("103", "Johnny", "Lopez", 12, 16, 12, 13, 14),
                 new NotaAlumno("104", "Jean", "Sullon", 19, 15, 12, 18, 20)
-        );
+        );*/
 
         columnCodigoNota.setCellValueFactory(new PropertyValueFactory<NotaAlumno, String>("codigo"));
         columnNombreNota.setCellValueFactory(new PropertyValueFactory<NotaAlumno, String>("nombres"));
@@ -672,7 +662,7 @@ public class SistemaCursoController {
         columnExamenParcial.setCellValueFactory(new PropertyValueFactory<NotaAlumno, Integer>("notaExamenParcial"));
         columnExamenFinal.setCellValueFactory(new PropertyValueFactory<NotaAlumno, Integer>("notaExamenFinal"));
 
-        tableNotas.setItems(listaNotaAlumnos);
+        tableNotas.setItems(notaAlumnos);
 
     }
 
