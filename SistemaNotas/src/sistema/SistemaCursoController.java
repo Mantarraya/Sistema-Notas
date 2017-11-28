@@ -265,6 +265,10 @@ public class SistemaCursoController {
         String anio = String.format("%04d", datePicker.getValue().getYear());
         String mes = String.format("%02d", datePicker.getValue().getMonthValue());
         String dia = String.format("%02d", datePicker.getValue().getDayOfMonth());
+        
+        String sesion = dia+"/"+mes+"/"+anio;
+        
+        establecerSesion(sesion);
 
         System.out.println("Nueva sesion registrada en el comboBox: " + dia + "/" + mes + "/" + anio);
 
@@ -284,7 +288,12 @@ public class SistemaCursoController {
 
         listaAsistencia = tablaAsistencia.getItems();
 
-        String fechaAsistencia = comboFecha.getSelectionModel().getSelectedItem().toString();
+        String fechaAsistencia = comboFecha.getValue();
+        
+        for(Asistencia x:listaAsistencia){
+            establecerAsistencia(x.getCodigo(),x.getAsistio(),fechaAsistencia);
+        }
+            
 
         /*       
         System.out.println(fechaAsistencia);
@@ -309,7 +318,14 @@ public class SistemaCursoController {
         String apellnotaProyecto = inputNotaProyecto.getText();
         String notaExamenParcial = inputNotaExamenFinal.getText();
         String notaExamenFinal = inputNotaExamenFinal.getText();
-
+        
+        String codigoAlumno = comboAlumnos.getValue().substring(0, 8);
+       
+        establecerNota("1",codigoAlumno,Integer.parseInt(notaControl));
+        establecerNota("2",codigoAlumno,Integer.parseInt(notaLaboratorio));
+        establecerNota("3",codigoAlumno,Integer.parseInt(apellnotaProyecto));
+        establecerNota("4",codigoAlumno,Integer.parseInt(notaExamenParcial));
+        establecerNota("5",codigoAlumno,Integer.parseInt(notaExamenFinal));
         //COMPLETAR
         // Obtener la opcion seleccionada del combo box
         // Agregamos el nuevo  en la base de datos
@@ -623,13 +639,12 @@ public class SistemaCursoController {
         selectionModel.select(7);
 
         // Combo BOX
-        ObservableList<String> options
-                = FXCollections.observableArrayList(
-                        "10/07/2017",
-                        "17/07/2017",
-                        "20/07/2017",
-                        "25/07/2017",
-                        "30/07/2017");
+        ObservableList<String> options = FXCollections.observableArrayList(obtenerSesiones());
+//                        "10/07/2017",
+//                        "17/07/2017",
+//                        "20/07/2017",
+//                        "25/07/2017",
+//                        "30/07/2017");
         comboFecha.setItems(options);
 
         comboFecha.getSelectionModel().selectFirst();
@@ -644,13 +659,14 @@ public class SistemaCursoController {
         /* COMPLETAR */
         // Modificar lista Asistencia 
         System.out.println(" ->->-> Obtener la lista de asistencia de una secion de la base de datos <-<-<-");
-        ObservableList<Asistencia> listaAsistencia = FXCollections.observableArrayList(
-                new Asistencia("101", "Francisco Fabian", true),
-                new Asistencia("102", "Jose Perez", true),
-                new Asistencia("103", "Jose Bejarano", false),
-                new Asistencia("104", "Johnny Lopez", false),
-                new Asistencia("105", "Jean Sullon", true)
-        );
+        String sesion = comboFecha.getValue();
+        ObservableList<Asistencia> listaAsistencia = FXCollections.observableArrayList(obtenerListaAsistencia(sesion));
+//                new Asistencia("101", "Francisco Fabian", true),
+//                new Asistencia("102", "Jose Perez", true),
+//                new Asistencia("103", "Jose Bejarano", false),
+//                new Asistencia("104", "Johnny Lopez", false),
+//                new Asistencia("105", "Jean Sullon", true)
+//        );
         // listaAsistencia = obtenerListaAsistencia('17/20/2017);
 
         columnCodigoAsistencia.setCellValueFactory(new PropertyValueFactory<Asistencia, String>("codigo"));
