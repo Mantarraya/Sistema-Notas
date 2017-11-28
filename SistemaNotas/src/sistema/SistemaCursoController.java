@@ -383,7 +383,7 @@ public class SistemaCursoController {
         String especialidad = inputEspecialidad.getText();
         String planAcademico = inputPlanAcademico.getText();
 
-        System.out.println("\nNombre Asignatura: " + nombreAsignatura);     
+        System.out.println("\nNombre Asignatura: " + nombreAsignatura);
         System.out.println("Facultad: " + facultad);
         System.out.println("Especialidad: " + especialidad);
         System.out.println("Plan Academico: " + planAcademico);
@@ -395,7 +395,7 @@ public class SistemaCursoController {
         establecerFacultadCurso(facultad);
         establecerEspecialidadCurso(especialidad);
         establecerPlanCurso(planAcademico);
-        
+
         mostrarAsignaturaAction(event);
 
     }
@@ -425,15 +425,65 @@ public class SistemaCursoController {
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(12);
 
-        // Combo BOX
-        ObservableList<String> options
-                = FXCollections.observableArrayList(
-                        "100 - Francisco Fabian",
-                        "101 - Jose Perez",
-                        "102 - Jose Bejarano",
-                        "103 - Johnny Lopez",
-                        "104 -Jean Sullon");
-        comboAlumnos.setItems(options);
+        ObservableList<Alumno> options = obtenerListaalumnos();
+        ObservableList<String> alumnos = FXCollections.observableArrayList();
+
+        for (Alumno al : options) {
+            String datosAlumno = al.getCodigo() + " - " + al.getNombres() + " " + al.getApellidos();
+
+            alumnos.add(datosAlumno);
+        }
+
+        comboAlumnos.setItems(alumnos);
+
+        String alumnoSelecionado = comboAlumnos.getSelectionModel().getSelectedItem();
+        if (alumnoSelecionado == null) {
+            return;
+        }
+        String codigoAlumno = alumnoSelecionado.substring(0, 8); // codigo
+
+        System.out.println("->->-> Actualizando notas del alumno en la base de datos <-<-<-");
+        // Boton Registrar - Notas Alumnos
+        // COMPLETAR
+        /*
+        actualizarNotaEvaluacionAlumno(codigoAlumno, "1", inputNotaControl.getText());
+        actualizarNotaEvaluacionAlumno(codigoAlumno, "2", inputNotaLaboratorio.getText());
+        actualizarNotaEvaluacionAlumno(codigoAlumno, "3", inputNotaProyecto.getText());
+        actualizarNotaEvaluacionAlumno(codigoAlumno, "4", inputNotaExamenParcial.getText());
+        actualizarNotaEvaluacionAlumno(codigoAlumno, "5", inputNotaExamenFinal.getText());
+         */
+    }
+
+    @FXML
+
+    void mostrarNotasComboAlumnoAction(ActionEvent event) {
+
+        System.out.println("->->-> Mostrando las notas de un alumno de la base de datos <-<-<-");
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(12);
+
+        String alumnoSeleccionado = comboAlumnos.getSelectionModel().getSelectedItem();
+        
+        if (alumnoSeleccionado == null) {
+            return;
+        }
+
+        String codigoAlumno = alumnoSeleccionado.substring(0, 8); // codigo
+
+        String notaControl = String.format("%02d", obtenerNotaEvaluacionAlumno(codigoAlumno, "1"));
+        inputNotaControl.setText(notaControl);
+
+        String notaLab = String.format("%02d", obtenerNotaEvaluacionAlumno(codigoAlumno, "2"));
+        inputNotaLaboratorio.setText(notaLab);
+
+        String notaProyecto = String.format("%02d", obtenerNotaEvaluacionAlumno(codigoAlumno, "3"));
+        inputNotaProyecto.setText(notaProyecto);
+
+        String notaParcial = String.format("%02d", obtenerNotaEvaluacionAlumno(codigoAlumno, "4"));
+        inputNotaExamenParcial.setText(notaParcial);
+
+        String notaFinal = String.format("%02d", obtenerNotaEvaluacionAlumno(codigoAlumno, "5"));
+        inputNotaExamenFinal.setText(notaFinal);
 
     }
 
@@ -641,10 +691,9 @@ public class SistemaCursoController {
         System.out.println("\n->->-> Obteniendo todos los datos de los notas de los alumnos de la base de datos ... <-<-<-\n");
 
         // COMPLETAR
-
         ObservableList<NotaAlumno> notaAlumnos = FXCollections.observableArrayList();
-        notaAlumnos = obtenerNotasalumnos();        
-        
+        notaAlumnos = obtenerNotasalumnos();
+
         /*ObservableList<NotaAlumno> listaNotaAlumnos = FXCollections.observableArrayList(
                 new NotaAlumno("100", "Francisco", "Fabian", 10, 11, 12, 13, 14),
                 new NotaAlumno("101", "Jose", "Perez", 14, 13, 12, 15, 14),
@@ -652,7 +701,6 @@ public class SistemaCursoController {
                 new NotaAlumno("103", "Johnny", "Lopez", 12, 16, 12, 13, 14),
                 new NotaAlumno("104", "Jean", "Sullon", 19, 15, 12, 18, 20)
         );*/
-
         columnCodigoNota.setCellValueFactory(new PropertyValueFactory<NotaAlumno, String>("codigo"));
         columnNombreNota.setCellValueFactory(new PropertyValueFactory<NotaAlumno, String>("nombres"));
         columnApellidoNota.setCellValueFactory(new PropertyValueFactory<NotaAlumno, String>("apellidos"));
